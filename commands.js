@@ -178,7 +178,7 @@ const handleCommands = async (sock, m, settings) => {
             }
         }
 
-        // ============================================
+          // ============================================
         // 🧠 AUTONOMOUS CHATBOT RECOGNITION LAYER (NO PREFIX)
         // ============================================
         if (!global.chatbotSettings) global.chatbotSettings = { mode: 'off' };
@@ -229,17 +229,9 @@ const handleCommands = async (sock, m, settings) => {
 
                     global.autonomousChats[sender].push(`Bot: ${chatbotReply}`);
 
+                    // Kutuma maandishi matupu ya kijasusi pekee bila link au ads zozote
                     await sock.sendMessage(remoteJid, {
-                        text: `> \`\`\`${chatbotReply}\`\`\`\n\n📢 *Subscribe YouTube:* https://youtube.com/@jampani-xmd?si=oLPtRqYf1h1ygSzt\n📡 *Pair Bot Here:* https://jampanbot.vercel.app`,
-                        contextInfo: {
-                            forwardingScore: 9999,
-                            isForwarded: true,
-                            forwardedNewsletterMessageInfo: {
-                                newsletterName: isUserInRizzSession ? 'JAMPAN-XMD RIZZLER NODE 🦊' : 'JAMPAN-XMD AI AUTOPILOT 🚀',
-                                newsletterJid: '120363409292513352@newsletter',
-                                serverMessageId: 144
-                            }
-                        }
+                        text: `> \`\`\`${chatbotReply}\`\`\``
                     }, { quoted: m });
 
                     return; // Zuia isisomeke kama command ya kawaida
@@ -248,6 +240,7 @@ const handleCommands = async (sock, m, settings) => {
                 }
             }
         }
+
         
         // --- COMMAND LOGIC CHECK ---
         if (!body.startsWith(prefix)) return;
